@@ -1,12 +1,17 @@
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Image, Button } from 'react-native'
 import React from 'react'
 import InstaStory from 'react-native-insta-story';
-import { AntDesign, Ionicons, Entypo } from '@expo/vector-icons';
+import {
+  AntDesign, Ionicons, Entypo, EvilIcons, FontAwesome5, SimpleLineIcons, MaterialCommunityIcons
+
+}
+  from '@expo/vector-icons';
 import data from '../components/data';
 // import { LinearGradient } from 'expo-linear-gradient';
 import Navbar from '../components/Navbar';
 // import stories from '../components/stories';
 import posts from '../components/posts';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const Home = () => {
@@ -17,13 +22,13 @@ const Home = () => {
         <Text style={[styles.logo]}>JJTUCS</Text>
         <View style={styles.headerButtons}>
 
-        <TouchableOpacity style={[styles.headerButton, styles.alnJfyCenter, padding.pad3, margin.mar5]}>
+          <TouchableOpacity style={[styles.headerButton, styles.alnJfyCenter, padding.pad3, margin.mar5]}>
             <Ionicons name="notifications-circle-outline" size={30} color="#5B5858" />
           </TouchableOpacity>
           <TouchableOpacity style={[styles.headerButton, styles.alnJfyCenter, padding.pad3, margin.mar5, { paddingLeft: 5, paddingRight: 5 }]}>
             <AntDesign name="message1" size={24} color="#5B5858" />
           </TouchableOpacity>
-        
+
         </View>
       </View>
       {/* <View style={styles.stories}>
@@ -70,21 +75,21 @@ const Home = () => {
 
       </View> */}
 
-<InstaStory
-  data={data}
-  duration={5}
-  avatarSize={70}
-  unPressedBorderColor={''}
-  // avatarImageStyle={{borderRadius:20}}
-//  storyUserContainerStyle={{borderWidth:0}}
- renderCloseComponent={({ item, onPress }) => (
-  <View style={{ flexDirection: 'row', justifyContent:'space-between', width:200 }}>
-    <Button title='share' onPress={{}}/>
-    <Button title='share' onPress={{}}/>
-  </View>
-)}
- 
-/>
+      <InstaStory
+        data={data}
+        duration={5}
+        avatarSize={70}
+        unPressedBorderColor={''}
+        // avatarImageStyle={{borderRadius:20}}
+        //  storyUserContainerStyle={{borderWidth:0}}
+        renderCloseComponent={({ item, onPress }) => (
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: 200 }}>
+            <Button title='share' onPress={{}} />
+            <Button title='share' onPress={{}} />
+          </View>
+        )}
+
+      />
 
 
       <View style={[styles.body, styles.alnJfyCenter]}>
@@ -119,9 +124,9 @@ const Home = () => {
                 <Entypo name="dots-three-vertical" size={20} color="#333230" />
 
               </View>
-              <Text style={{ color: 'rgba(0, 0, 0, 0.66)', margin:10}}>{item.content}.</Text>
-              
-              
+              <Text style={{ color: 'rgba(0, 0, 0, 0.66)', margin: 10 }}>{item.content}.</Text>
+
+
 
               {
                 item.media !== '' && <Image
@@ -131,6 +136,33 @@ const Home = () => {
 
                 />
               }
+
+
+
+              <View style={styles.background}>
+
+                <View style={{ flexDirection: 'row', alignItems: 'center', width:'30%' }}>
+
+                  <TouchableOpacity style={{borderRightColor:'grey', borderRightWidth:1, paddingRight:10, paddingLeft:10}}>
+                    <EvilIcons name="heart" size={40} color="grey" />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity style={{borderRightColor:'grey', borderRightWidth:1, paddingRight:10, paddingLeft:10}}>
+                    <FontAwesome5 name="comment" size={24} color="grey" />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity style={{borderRightColor:'grey', borderRightWidth:1, paddingRight:10, paddingLeft:10}}>
+                    <SimpleLineIcons name="paper-plane" size={24} color="grey" style={{ transform: [{ rotate: '45deg' }] }}/>
+                  </TouchableOpacity>
+
+
+                </View>
+
+                <TouchableOpacity style={{ transform: [{ rotate: '-90deg' }] }}><MaterialCommunityIcons name="label-variant-outline" size={30} color="grey" /></TouchableOpacity>
+
+              </View>
+
+
             </View>
 
           }}
@@ -138,6 +170,8 @@ const Home = () => {
 
 
         />
+
+
 
 
       </View>
@@ -270,7 +304,8 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     borderColor: 'black',
-    borderWidth: 2
+    borderWidth: 2,
+
   },
 
   bodyItem: {
@@ -280,6 +315,7 @@ const styles = StyleSheet.create({
     height: 'auto',
     margin: 10,
     padding: 5,
+    paddingBottom: 0,
     backgroundColor: '#ffff',
     borderRadius: 10
 
@@ -287,10 +323,10 @@ const styles = StyleSheet.create({
 
   media: {
     width: '100%',
-    height:400,
+    height: 400,
     // resizeMode:'contain',
-    objectFit:'cover',
-    borderRadius: 10
+    objectFit: 'cover',
+    // borderRadius: 10
 
 
 
@@ -326,11 +362,15 @@ const styles = StyleSheet.create({
 
   background: {
 
-    width: 70,
-    height: 70,
+    width: '100%',
+    height: 50,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius:20
+    justifyContent: 'space-between',
+
+    width: '100%',
+    borderTopColor: '#928D8DD9',
+    borderTopWidth: 1
 
 
   }
